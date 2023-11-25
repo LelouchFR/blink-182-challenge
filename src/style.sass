@@ -32,6 +32,7 @@ body
     section#main-page
         height: 100%
         z-index: 2
+        overflow: hidden
 
         div
             &:first-child
@@ -46,6 +47,9 @@ body
                 video
                     width: 100%
                     z-index: 1
+                    @media screen and (max-width: 800px)
+                        height: 100vh
+                        transform: scale(3)
                 
                 figure
                     position: absolute
@@ -57,6 +61,8 @@ body
 
                     img
                         width: 100%
+                        @media screen and (max-width: 800px)
+                            height: 100vh
 
                     &:first-child img
                         position: relative
@@ -86,6 +92,9 @@ body
         position: relative
         @media screen and (min-width: 1500px)
             padding: 500px 0px 0px 0px
+        @media screen and (max-width: 800px)
+            padding: 0
+            visibility: hidden // too bugged to be shown on mobile
 
         div
             position: relative
@@ -97,6 +106,8 @@ body
                 transform: translate(-30%, -1%) rotate(0deg)
                 @media screen and (min-width: 1500px)
                     transform: translate(-22%, -1%) rotate(0deg)
+                @media screen and (max-width: 800px)
+                    transform: translate(0) rotate(0)
             
             ol
                 position: absolute
@@ -137,6 +148,10 @@ body
             transition: .2s
             left: 50%
             transform: translate(-90%) rotate(0deg)
+            @media screen and (max-width: 800px)
+                transform: translate(-20%) rotate(0deg)
+                padding: 100px 0 0 0
+                margin-right: 20px
 
             &.vinyl
                 border-radius: 50%
@@ -168,6 +183,14 @@ body
                     grid-template-columns: repeat(4, 1fr)
                     padding: 20px
                     line-height: 40px
+                    @media screen and (max-width: 800px)
+                        position: relative
+                        grid-template-columns: repeat(2, 1fr)
+                        width: 100%
+                        line-height: initial
+                        left: 50%
+                        transform: translate(-50%)
+                        gap: 10px
 
                     &:hover
                         background: #0000007F
@@ -189,12 +212,16 @@ body
     section#store
         position: relative
         padding: 4rem
+        @media screen and (max-width: 800px)
+            padding: 4rem 2rem
 
         section.cards
             display: grid
             grid-template-columns: repeat(4, 1fr)
             text-align: left
             gap: 10px
+            @media screen and (max-width: 800px)
+                grid-template-columns: 1fr
             
             div
                 transition: .2s
@@ -202,14 +229,19 @@ body
                 &:hover
                     background: #0000007F
                     figure > img
-                        transform: scale(1.1)
+                        transform: translate(-50%) scale(1.1)
 
                 figure
                     > img
+                        position: relative
+                        left: 50%
+                        transform: translate(-50%)
                         transition: .2s
                     figcaption
                         padding-top: 1rem
                         line-height: 2rem
+                        @media screen and (max-width: 800px)
+                            padding-top: 0
 
     section#band
         position: relative
@@ -217,6 +249,8 @@ body
         section
             display: grid
             grid-template-columns: repeat(3, 1fr)
+            @media screen and (max-width: 800px)
+                grid-template-columns: 1fr
 
             div > div
                 overflow: hidden
