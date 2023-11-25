@@ -1,0 +1,246 @@
+@import './assets/font/satoshi.css'
+@import './assets/font/freshmarker.css'
+
+html
+    scroll-behavior: smooth
+
+@mixin cta-button
+    $colors: #00FFB2, #09F0FF, #2C4169, #F966B4
+    margin: 0
+    text-transform: uppercase
+    background: #2B2B2B
+    border: 1px solid #2B2B2B
+    color: #fff
+    cursor: pointer
+
+body
+    background-color: #0F1310
+    color: #fff
+    margin: 0
+    font-family: 'Satoshi-Variable'
+
+    section
+        text-align: center
+        h2
+            font-size: 4rem
+            font-family: 'Fresh Marker'
+            padding: 20px
+        
+        > p
+            padding-bottom: 4rem
+
+    section#main-page
+        height: 100%
+        z-index: 2
+
+        div
+            &:first-child
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                overflow: hidden
+                z-index: 1
+
+                video
+                    width: 100%
+                    z-index: 1
+                
+                figure
+                    position: absolute
+                    top: 0
+                    width: 100%
+                    z-index: 1
+                    margin: 0
+                    background: linear-gradient(#00000000, #0F1310 90%)
+
+                    img
+                        width: 100%
+
+                    &:first-child img
+                        position: relative
+
+            &:last-child
+                position: relative
+                text-align: center
+                left: 50%
+                top: 50%
+                transform: translate(-50%, 0)
+                z-index: 2
+                
+                figure
+                    position: relative
+                    z-index: 2
+                    
+                    a > img
+                        transition: .2s
+                        &:hover
+                            opacity: .7
+
+                    &:last-child
+                        img:last-child
+                            transform: translate(-12px)
+
+    section#music
+        position: relative
+        @media screen and (min-width: 1500px)
+            padding: 500px 0px 0px 0px
+
+        div
+            position: relative
+            z-index: 4
+            img
+                padding: 100px
+                transition: .2s
+                left: 50%
+                transform: translate(-30%, -1%) rotate(0deg)
+                @media screen and (min-width: 1500px)
+                    transform: translate(-22%, -1%) rotate(0deg)
+            
+            ol
+                position: absolute
+                text-align: left
+                line-height: 21.6px
+                color: #2B2B2B
+                top: 100px
+                left: 25%
+                transform: translate(-35%)
+                @media screen and (min-width: 1500px)
+                    transform: translate(-25%, 5%)
+
+            div
+                position: absolute
+                top: 400px
+                left: 350px
+                display: grid
+
+                button
+                    @include cta-button()
+                    padding: .5rem 1rem
+                    margin: 10px
+                    
+                    &:last-child
+                        background: #00000000
+                        color: #2B2B2B
+
+                @media screen and (min-width: 1500px)
+                    display: block
+                    top: 600px
+                    left: 400px
+                    button
+                        padding: 1rem 2rem
+                        margin: 10px
+
+        figure > img
+            padding: 100px
+            transition: .2s
+            left: 50%
+            transform: translate(-90%) rotate(0deg)
+
+            &.vinyl
+                border-radius: 50%
+                position: absolute
+                animation: vinyl_spin 5s linear infinite
+
+            &.album
+                position: relative
+
+    section#tour
+        position: relative
+        background: linear-gradient(#0F1310 0%, #00000000 95%, #0F1310), url(./assets/img/texture.png) center / cover
+        background-blend-mode: darken
+        
+        section
+            ul
+                position: relative
+                list-style-type: none
+                text-align: left
+                padding: 20px
+                width: 70%
+                left: 50%
+                transform: translate(-50%)
+                display: grid
+                
+                li
+                    transition: .2s
+                    display: grid
+                    grid-template-columns: repeat(4, 1fr)
+                    padding: 20px
+                    line-height: 40px
+
+                    &:hover
+                        background: #0000007F
+                        &.sold_out
+                            background: #00000000
+
+                    &.sold_out
+                            opacity: .5
+                    
+                    span
+                        padding: 0 20px
+                        &:last-child
+                            text-align: center
+                    
+                    button
+                        @include cta-button()
+                        padding: 1rem 0rem
+
+    section#store
+        position: relative
+        padding: 4rem
+
+        section.cards
+            display: grid
+            grid-template-columns: repeat(4, 1fr)
+            text-align: left
+            gap: 10px
+            
+            div
+                transition: .2s
+
+                &:hover
+                    background: #0000007F
+                    figure > img
+                        transform: scale(1.1)
+
+                figure
+                    > img
+                        transition: .2s
+                    figcaption
+                        padding-top: 1rem
+                        line-height: 2rem
+
+    section#band
+        position: relative
+
+        section
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+
+            div > div
+                overflow: hidden
+                img
+                    transition: .2s
+                    filter: grayscale(1)
+                    &:hover
+                        filter: grayscale(0)
+                        transform: scale(1.1)
+
+    footer
+        padding: 10px
+        padding-top: 40px
+        text-align: center
+
+        p
+            a
+                color: #ffffff
+
+            &:last-child
+                opacity: .5
+
+@keyframes vinyl_spin
+    from
+        transform: translate(-65%) rotate(0deg)
+    to
+        transform: translate(-65%) rotate(360deg)
